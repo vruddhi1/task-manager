@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
             taskList.appendChild(li);
             taskInput.value = "";
             dueDateInput.value = "";
+
+            addDeleteListener(li);
+            addEditListener(li);
         }
     });
 
@@ -35,7 +38,38 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         return li;
     }
+
+    function addDeleteListener(li) {
+        const deleteButton = li.querySelector(".delete-button");
+        deleteButton.addEventListener("click", function () {
+            taskList.removeChild(li);
+        });
+    }
+
+    function addEditListener(li) {
+        const editButton = li.querySelector(".edit-button");
+        const taskTextElement = li.querySelector(".task-text");
+        const taskPriorityElement = li.querySelector(".task-priority");
+        const taskDueElement = li.querySelector(".task-due");
+
+        editButton.addEventListener("click", function () {
+            const newText = prompt("Edit task:", taskTextElement.textContent);
+            if (newText !== null) {
+                taskTextElement.textContent = newText;
+                const newPriority = prompt("Edit priority:", taskPriorityElement.textContent);
+                if (newPriority !== null) {
+                    taskPriorityElement.textContent = newPriority;
+                    const newDueDate = prompt("Edit due date:", taskDueElement.textContent);
+                    if (newDueDate !== null) {
+                        taskDueElement.textContent = newDueDate;
+                    }
+                }
+            }
+        });
+    }
 });
+
+
 
 
 
