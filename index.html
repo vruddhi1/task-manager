@@ -1,35 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Task Manager</h1>
     </header>
     <main>
-        <div class="task-input">
-            <input type="text" id="task" placeholder="Enter a task...">
-            <input type="text" id="due-date" placeholder="Due Date">
-            <select id="priority">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-            <button id="add-task">Add Task</button>
+        <!-- Search Task by Name -->
+<div class="search">
+    <label for="search-task">Search by Task Name:</label>
+    <input type="text" id="search-task" placeholder="Enter task name">
+    <button id="search-button">Search</button>
+</div>
+
+        <!-- Filter Dropdown -->
+    <div class="filter">
+        <label for="filter-status">Filter by Status:</label>
+        <select id="filter-status">
+            <option value="all">All</option>
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Done">Done</option>
+        </select>
+    </div>
+        <!-- Create Task Button -->
+        <button id="create-task-button" class="btn-primary">Create Task</button>
+        
+        <!-- Task List Table -->
+        <table id="task-list" class="task-table">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Task items go here -->
+            </tbody>
+        </table>
+        
+        <!-- Create Task Modal -->
+        <div id="create-task-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Create New Task</h2>
+                <form id="task-form">
+                    <label for="task-title">Task Title:</label>
+                    <input type="text" id="task-title" class="input-text" required>
+                    
+                    <label for="task-description">Task Description:</label>
+                    <textarea id="task-description" class="input-textarea" required></textarea>
+                    
+                    <button type="submit" id="create-task" class="btn-primary">Create Task</button>
+                </form>
+            </div>
         </div>
-        <ul id="task-list">
-            <!-- Task items will be added dynamically here -->
-        </ul>
+
     </main>
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
 
